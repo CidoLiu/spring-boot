@@ -5,10 +5,7 @@ import cn.tycoding.entity.PageBean;
 import cn.tycoding.entity.Result;
 import cn.tycoding.service.GoodsService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -31,10 +28,10 @@ public class GoodsController {
      * @param pageSize 每页显示的记录数
      * @return
      */
-    @RequestMapping("/findByConPage")
+    @GetMapping("/findByConPage")
     public PageBean findByConPage(Goods goods,
-                                  @RequestParam(value = "pageCode", required = false) int pageCode,
-                                  @RequestParam(value = "pageSize", required = false) int pageSize) {
+                                  @RequestParam(value = "pageCode", required = false, defaultValue = "1") int pageCode,
+                                  @RequestParam(value = "pageSize", required = false, defaultValue = "5") int pageSize) {
         return goodsService.findByPage(goods, pageCode, pageSize);
     }
 
@@ -44,7 +41,7 @@ public class GoodsController {
      * @param goods
      * @return
      */
-    @RequestMapping("/create")
+    @PostMapping("/create")
     public Result create(@RequestBody Goods goods) {
         try {
             goodsService.create(goods);
@@ -61,7 +58,7 @@ public class GoodsController {
      * @param goods
      * @return
      */
-    @RequestMapping("/update")
+    @PostMapping("/update")
     public Result update(@RequestBody Goods goods) {
         try {
             goodsService.update(goods);
@@ -78,7 +75,7 @@ public class GoodsController {
      * @param ids
      * @return
      */
-    @RequestMapping("/delete")
+    @PostMapping("/delete")
     public Result delete(@RequestBody Long... ids) {
         try {
             goodsService.delete(ids);
@@ -95,7 +92,7 @@ public class GoodsController {
      * @param id
      * @return
      */
-    @RequestMapping("/findById")
+    @GetMapping("/findById")
     public List<Goods> findById(@RequestParam(value = "id", required = false) Long id) {
         return goodsService.findById(id);
     }

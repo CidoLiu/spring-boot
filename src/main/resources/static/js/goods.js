@@ -85,7 +85,7 @@ var vm = new Vue({
         //条件查询
         search(pageCode, pageSize) {
             this.loadings();
-            this.$http.post('/goods/findByConPage?pageSize=' + pageSize + '&pageCode=' + pageCode, this.searchEntity).then(result => {
+            this.$http.get('/goods/findByConPage?pageSize=' + pageSize + '&pageCode=' + pageCode, this.searchEntity).then(result => {
                 console.log(result);
                 this.goods = result.body.rows;
                 this.pageConf.totalPage = result.body.total;
@@ -257,7 +257,7 @@ var vm = new Vue({
             this.showEditor = true;
             this.editor = {}; //清空表单
             //查询当前id对应的数据
-            this.$http.post('/goods/findById', {id: id}).then(result => {
+            this.$http.get('/goods/findById', {id: id}).then(result => {
                 this.fileList.forEach(row => {
                     row.url = result.body[0].image; //将图片的URL地址赋值给file-list展示出来
                 });

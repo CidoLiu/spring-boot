@@ -3,6 +3,7 @@ package cn.tycoding.controller.admin;
 import cn.tycoding.entity.User;
 import cn.tycoding.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -23,7 +24,7 @@ public class UserController {
      *
      * @return
      */
-    @RequestMapping("/findAll")
+    @GetMapping("/findAll")
     public List<User> findAll() {
         return userService.findAll();
     }

@@ -37,7 +37,7 @@ public class MyInterceptor {
             System.out.println("-----------用户未登录-----------");
             attributes.getResponse().sendRedirect("/login"); //手动转发到/login映射路径
         }
-        System.out.println("-----------用户已登录-----------");
+//        System.out.println("-----------用户已登录-----------");
 
         //一定要指定Object返回值，若AOP拦截的Controller return了一个视图地址，那么本来Controller应该跳转到这个视图地址的，但是被AOP拦截了，那么原来Controller仍会执行return，但是视图地址却找不到404了
         //切记一定要调用proceed()方法

@@ -1,6 +1,7 @@
 package cn.tycoding.controller.admin;
 
 import cn.tycoding.entity.Result;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -27,7 +28,7 @@ public class UploadDownController {
      * @param request
      * @return
      */
-    @RequestMapping("/upload")
+    @PostMapping("/upload")
     public Result upload(@RequestParam("picture") MultipartFile picture, HttpServletRequest request) {
         //获取文件在服务器的储存位置
         String path = request.getSession().getServletContext().getRealPath("/upload");
